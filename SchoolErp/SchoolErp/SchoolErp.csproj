@@ -163,6 +163,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ClassController.cs" />
+    <Compile Include="Controllers\Cl_SecController.cs" />
     <Compile Include="Controllers\EventController.cs" />
     <Compile Include="Controllers\ExamController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -250,6 +251,7 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\ClassServices.cs" />
+    <Compile Include="Services\Cl_Sec.cs" />
     <Compile Include="Services\CSTservices.cs" />
     <Compile Include="Services\DesignationServices.cs" />
     <Compile Include="Services\EnrolmentServices.cs" />
@@ -317,6 +319,7 @@
     <Content Include="images\kaleem.jpg" />
     <Content Include="images\lok.jpg" />
     <Content Include="jquery\Class.js" />
+    <Content Include="jquery\Cl_Sec.js" />
     <Content Include="jquery\CST.js" />
     <Content Include="jquery\Designation.js" />
     <Content Include="jquery\Event.js" />
@@ -409,6 +412,7 @@
     <Content Include="Views\Exam\Exam_Schedule.cshtml" />
     <Content Include="Views\Exam\Result.cshtml" />
     <Content Include="Views\Event\Event.cshtml" />
+    <Content Include="Views\Cl_Sec\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
