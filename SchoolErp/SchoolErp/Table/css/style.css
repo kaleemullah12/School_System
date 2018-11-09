@@ -12,13 +12,22 @@ table{
   table-layout: auto;
 }
 .tbl-header{
-  background-color: dimgrey;
+  background-color: darkblue;
  }
 .tbl-content{
   height:300px;
-  overflow-x:auto;
+  overflow-y:auto;
   margin-top: 0px;
   border: 1px solid rgba(255,255,255,0.3);
+}
+tbody
+{
+    overflow-y:auto;
+    height:120px;
+}
+thead
+{
+    overflow:auto;
 }
 th{
   padding: 20px 15px;

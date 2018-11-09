@@ -12,31 +12,33 @@
 
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <!-- VENDOR CSS -->
+    @*<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">*@
     <link rel="stylesheet" href="~/asset/bootstrap.min.css">
+    @*<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">*@
     <link rel="stylesheet" href="~/asset/animate.min.css">
     <link rel="stylesheet" href="~/asset/font-awesome.min.css">
     <link rel="stylesheet" href="~/asset/bootstrap-progressbar-3.3.4.min.css">
     @*<link rel="stylesheet" href="~/asset/chartist.min.css">
-    <link rel="stylesheet" href="~/asset/chartist-plugin-tooltip.css">*@
+        <link rel="stylesheet" href="~/asset/chartist-plugin-tooltip.css">*@
     @*<link href="~/Scripts/jquery.dataTables.css" rel="stylesheet" />*@
     <!-- MAIN CSS -->
     <link rel="stylesheet" href="~/asset/main.css">
     <link rel="stylesheet" href="~/asset/color_skins.css">
     <link href="~/Content/Pnotify/pnotify.custom.min.css" rel="stylesheet" />
-   
+
     <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
 
-   
-   
 
-   
+
+
+
 </head>
 <body class="theme-blue">
 
     <!-- Page Loader -->
     <div class="page-loader-wrapper">
         <div class="loader">
-            <div class="m-t-30"><img src="../assets/images/thumbnail.png" width="48" height="48" alt="Mplify"></div>
+            <div class="m-t-30"><img src="~/images/Screenshot_3.jpg" width="100" height="48" alt="Mplify"></div>
             <p>Please wait...</p>
         </div>
     </div>
@@ -47,36 +49,35 @@
 
         <nav class="navbar navbar-fixed-top">
             <div class="container-fluid">
-
-                <div class="navbar-brand">
-                    <a href="index.html">
-                        <img src="../assets/images/logo-icon.svg" alt="Mplify Logo" class="img-responsive logo">
-                        <span class="name">mplify</span>
-                    </a>
+                <div>
+                    <div class="navbar-brand">
+                        <a href="/Home/Dashboard">
+                            <img src="~/images/Screenshot_4.jpg" style="margin-top:-10px" alt="Mplify Logo" class="img-responsive logo">
+                            <span class="name">ctus</span>                        </a>
+                    </div>
                 </div>
-
                 <div class="navbar-right">
                     <ul class="list-unstyled clearfix mb-0">
                         <li>
                             <div class="navbar-btn btn-toggle-show">
-                                <button type="button" class="btn-toggle-offcanvas"><i class="lnr lnr-menu fa fa-bars"></i></button>
+                                <button type="button" class="btn-toggle-offcanvas"><i class="lnr lnr-menu glyphicon glyphicon-home"></i></button>
                             </div>
-                            <a href="javascript:void(0);" class="btn-toggle-fullwidth btn-toggle-hide"><i class="fa fa-bars"></i></a>
+                            <a href="javascript:void(0);" class="btn-toggle-fullwidth btn-toggle-hide"><i class="glyphicon glyphicon-home"></i></a>
                         </li>
-                        <li>
-                            <form id="navbar-search" class="navbar-form search-form">
-                                <input value="" class="form-control" placeholder="Search here..." type="text">
-                                <button type="button" class="btn btn-default"><i class="icon-magnifier"></i></button>
-                            </form>
-                        </li>
+                        @*<li>
+                                <form id="navbar-search" class="navbar-form search-form">
+                                    <input value="" class="form-control" placeholder="Search here..." type="text">
+                                    <button type="button" class="btn btn-default"><i class="icon-magnifier"></i></button>
+                                </form>
+                            </li>*@
                         <li>
                             <div id="navbar-menu">
-                                @*<ul class="nav navbar-nav">
+                                <ul class="nav navbar-nav">
                                     <li>
                                         <a href="javascript:void(0);" class="mega_menu icon-menu" title="Mega Menu">Mega</a>
                                     </li>
                                     <li>
-                                        <a href="javascript:void(0);" class="create_new icon-menu" title="Create New">Create New</a>
+                                        <a href="/Home/Logout" class="create_new icon-menu" title="Log Out"><i class="glyphicon glyphicon-log-out"></i></a>
                                     </li>
                                     <li class="dropdown">
                                         <a href="javascript:void(0);" class="dropdown-toggle icon-menu" data-toggle="dropdown">
@@ -140,95 +141,10 @@
                                             <li class="footer"><a href="javascript:void(0);" class="more">See all notifications</a></li>
                                         </ul>
                                     </li>
-                                    <li class="dropdown">
-                                        <a href="javascript:void(0);" class="dropdown-toggle icon-menu" data-toggle="dropdown"><i class="icon-flag"></i><span class="notification-dot"></span></a>
-                                        <ul class="dropdown-menu animated bounceIn task">
-                                            <li class="header"><strong>Project</strong></li>
-                                            <li class="body">
-                                                <ul class="menu tasks list-unstyled">
-                                                    <li>
-                                                        <a href="javascript:void(0);">
-                                                            <span class="text-muted">Clockwork Orange <span class="float-right">29%</span></span>
-                                                            <div class="progress">
-                                                                <div class="progress-bar l-turquoise" role="progressbar" aria-valuenow="29" aria-valuemin="0" aria-valuemax="100" style="width: 29%;"></div>
-                                                            </div>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0);">
-                                                            <span class="text-muted">Blazing Saddles <span class="float-right">78%</span></span>
-                                                            <div class="progress">
-                                                                <div class="progress-bar l-slategray" role="progressbar" aria-valuenow="78" aria-valuemin="0" aria-valuemax="100" style="width: 78%;"></div>
-                                                            </div>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0);">
-                                                            <span class="text-muted">Project Archimedes <span class="float-right">45%</span></span>
-                                                            <div class="progress">
-                                                                <div class="progress-bar l-parpl" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 45%;"></div>
-                                                            </div>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0);">
-                                                            <span class="text-muted">Eisenhower X <span class="float-right">68%</span></span>
-                                                            <div class="progress">
-                                                                <div class="progress-bar l-coral" role="progressbar" aria-valuenow="68" aria-valuemin="0" aria-valuemax="100" style="width: 68%;"></div>
-                                                            </div>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0);">
-                                                            <span class="text-muted">Oreo Admin Templates <span class="float-right">21%</span></span>
-                                                            <div class="progress">
-                                                                <div class="progress-bar l-amber" role="progressbar" aria-valuenow="21" aria-valuemin="0" aria-valuemax="100" style="width: 21%;"></div>
-                                                            </div>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li class="footer"><a href="javascript:void(0);">View All</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="dropdown">
-                                        <a href="javascript:void(0);" class="dropdown-toggle icon-menu" data-toggle="dropdown"><i class="fa fa-language"></i></a>
-                                        <ul class="dropdown-menu animated flipInX choose_language">
-                                            <li><a href="javascript:void(0);">English</a></li>
-                                            <li><a href="javascript:void(0);">French</a></li>
-                                            <li><a href="javascript:void(0);">Spanish</a></li>
-                                            <li><a href="javascript:void(0);">Portuguese</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="dropdown">
-                                        <a href="javascript:void(0);" class="dropdown-toggle icon-menu" data-toggle="dropdown">
-                                            <img class="rounded-circle" src="../assets/images/user-small.png" width="30" alt="">
-                                        </a>
-                                        <div class="dropdown-menu animated flipInY user-profile">
-                                            <div class="d-flex p-3 align-items-center">
-                                                <div class="drop-left m-r-10">
-                                                    <img src="../assets/images/user-small.png" class="rounded" width="50" alt="">
-                                                </div>
-                                                <div class="drop-right">
-                                                    <h4>Samuel Morriss</h4>
-                                                    <p class="user-name">samuelmorris@info.com</p>
-                                                </div>
-                                            </div>
-                                            <div class="m-t-10 p-3 drop-list">
-                                                <ul class="list-unstyled">
-                                                    <li><a href="page-profile.html"><i class="icon-user"></i>My Profile</a></li>
-                                                    <li><a href="app-inbox.html"><i class="icon-envelope-open"></i>Messages</a></li>
-                                                    <li><a href="javascript:void(0);"><i class="icon-settings"></i>Settings</a></li>
-                                                    <li class="divider"></li>
-                                                    <li><a href="page-login.html"><i class="icon-power"></i>Logout</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </li>
                                     <li>
                                         <a href="javascript:void(0);" class="icon-menu js-right-sidebar"><i class="icon-settings"></i></a>
                                     </li>
-                                </ul>*@
+                                </ul>
                             </div>
                         </li>
                     </ul>
@@ -241,67 +157,61 @@
                 <nav id="leftsidebar-nav" class="sidebar-nav">
                     <ul id="main-menu" class="metismenu">
                         <li class="heading">Main</li>
-                        <li class="active"><a href="index.html"><i class="icon-home"></i><span>Dashboard</span></a></li>
+                        <li class="active"><a href="/Home/Dashboard"><i class="glyphicon glyphicon-home"></i><span>Dashboard</span></a></li>
                         <li class="heading">Menu</li>
-                         <li>
-                            <a href="#forms" class="has-arrow"><i class="icon-pencil"></i><span>Students</span></a>
+                        <li>
+                            <a href="#forms" class="has-arrow"><i class="glyphicon glyphicon-pencil "></i><span>Students</span></a>
                             <ul>
                                 <li><a href="/Students/AddStudent">Add Student</a></li>
-                                <li><a href="/Students/StudentList">Student List</a></li>
-                                <li><a href="/Students/AddAttendence">Add Attendence</a></li>
-                                <li><a href="forms-wizard.html">Attendence List</a></li>
-                                <li><a href="/Students/Student_Enrolment">Add Student Enrollment</a></li>
-                                <li><a href="forms-wizard.html">Student Enrollment List</a></li>
                                 
+                                <li><a href="/Students/AddAttendence">Add Attendence</a></li>
+                                
+                                <li><a href="/Students/Student_Enrolment">Add Student Enrollment</a></li>
+                                
+
                             </ul>
                         </li>
                         <li>
-                            <a href="#Tables" class="has-arrow"><i class="icon-tag"></i><span>Staff</span></a>
+                            <a href="#Tables" class="has-arrow"><i class="glyphicon glyphicon-user"></i><span>Staff</span></a>
                             <ul>
                                 <li><a href="/Staff/AddStaff">Add Staff</a></li>
                                 <li><a href="/Staff/AddDesignation">Add Designation</a></li>
-                                <li><a href="/Staff/Staff_Attendence">Staff Attendence</a></li>
-                                <li><a href="">Staff List</a></li>
-                                <li><a href="">Staff Attendence List</a></li>
-                                 </ul>
-                        </li>
-                        <li>
-                            <a href="#charts" class="has-arrow"><i class="icon-bar-chart"></i><span>Classes</span></a>
-                            <ul>
-                                <li><a href="/Class/AddClass">Add Classes</a> </li>
-                                <li><a href="">Classes List</a> </li>
-                                <li><a href="/Class/AddSection">Add Section</a> </li>
-                                <li><a href="">Section List</a> </li>
-
-                               
-                                </ul>
-                        </li>
-                        <li>
-                            <a href="#Widgets" class="has-arrow"><i class="icon-puzzle"></i><span>Subject</span></a>
-                            <ul>
-                                <li><a href="/Class/AddSubject">Add Subject</a></li>
-                                <li><a href="">Subjects List</a></li>
-                                <li><a href="/Subject/CST">Add Subject Detail</a></li>
-                                <li><a href="widgets-chart.html">CST List</a></li>
-                                 </ul>
-                        </li>
-                        <li>
-                            <a href="#Widgets" class="has-arrow"><i class="icon-puzzle"></i><span>Exam</span></a>
-                            <ul>
-                                
-                                <li><a href="/Exam/Exam_Schedule">Add Exam Schedule</a></li>
-                                
-                                <li><a href="widgets-chart.html">Exam List</a></li>
-                                <li><a href="/Exam/Result">Exam Results</a></li>
+                                s
                             </ul>
                         </li>
+                        <li>
+                            <a href="#charts" class="has-arrow"><i class="glyphicon glyphicon-euro"></i><span>Classes</span></a>
+                            <ul>
+                                <li><a href="/Class/AddClass">Add Classes</a> </li>
+                                <li><a href="/Class/AddSection">Add Section</a> </li>
+                                <li><a href="">Class List</a> </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#Widgets" class="has-arrow"><i class="glyphicon glyphicon-tasks"></i><span>Subject</span></a>
+                            <ul>
+                                <li><a href="/Class/AddSubject">Add Subject</a></li>
+                                <li><a href="widgets-data.html">Add Subject Detail</a></li>
+                                <li><a href="widgets-chart.html">CST List</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#Widgets" class="has-arrow"><i class="glyphicon glyphicon-th"></i><span>Exam</span></a>
+                            <ul>
+                                <li><a href="widgets-statistics.html">Add School Schedule</a></li>
+                                <li><a href="widgets-data.html">Add Exam Schedule</a></li>
+                                <li><a href="widgets-chart.html">Add Class Exam</a></li>
+                                <li><a href="widgets-chart.html">Exam List</a></li>
+                            </ul>
+                        </li>
+
                         <li class="heading">Event</li>
                         <li>
-                            <a href="#FileManager" class="has-arrow"><i class="icon-folder"></i><span>Event</span></a>
+                            <a href="#FileManager" class="has-arrow"><i class="glyphicon glyphicon-glass"></i><span>Event</span></a>
                             <ul>
-                                <li><a href="/Event/Event">Add Event</a></li>
+                                <li><a href="file-dashboard.html">Add Event</a></li>
                                 <li><a href="file-documents.html">Show Event</a></li>
-                                   </ul>
+                            </ul>
                         </li>
                         <li>
                             <a href="#Blog" class="has-arrow"><i class="icon-globe"></i><span>Blog</span></a>
@@ -423,7 +333,7 @@
                             </div>
                         </div>
                     </div>
-                   
+
                     <div class="col-lg-3 col-md-6 col-sm-12">
                         <div class="card">
                             <div class="header">
@@ -750,33 +660,35 @@
 
                 @RenderBody()
                 <div class="clearfix"></div>
-                
+
 
 
             </div>
         </div>
 
     </div>
-   
+
     <!-- Javascript -->
-  
-    
+
+
     <script src="~/asset/libscripts.bundle.js"></script>
     <script src="~/asset/vendorscripts.bundle.js"></script>
 
-   
+    @*<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>*@
+    @*<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>*@
+
     @*<script src="~/asset/chartist.bundle.js"></script>*@
     @*<script src="~/asset/knob.bundle.js"></script> <!-- Jquery Knob-->
-    <script src="~/asset/flotscripts.bundle.js"></script> <!-- flot charts Plugin Js -->
-    <script src="~/asset/jquery.flot.selection.js"></script>*@
-    
+        <script src="~/asset/flotscripts.bundle.js"></script> <!-- flot charts Plugin Js -->
+        <script src="~/asset/jquery.flot.selection.js"></script>*@
+
     <script src="~/asset/mainscripts.bundle.js"></script>
-    
-    
+
+
 
     <script src="~/Content/Pnotify/pnotify.custom.min.js"></script>
     @*<script src="~/asset/index.js"></script>*@
-   
-   
+
+
 </body>
 </html>
