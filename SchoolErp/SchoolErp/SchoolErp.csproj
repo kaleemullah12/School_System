@@ -318,6 +318,8 @@
     <Content Include="images\bg1.jpg" />
     <Content Include="images\kaleem.jpg" />
     <Content Include="images\lok.jpg" />
+    <Content Include="images\Screenshot_3.jpg" />
+    <Content Include="images\Screenshot_4.jpg" />
     <Content Include="jquery\Class.js" />
     <Content Include="jquery\Cl_Sec.js" />
     <Content Include="jquery\CST.js" />
@@ -394,7 +396,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Home\menu.cshtml" />
     <Content Include="Views\Shared\Dashboard.cshtml" />
     <Content Include="Views\Home\Dashboard.cshtml" />
