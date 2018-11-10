@@ -26,7 +26,7 @@ namespace SchoolErp.Models
     
         public int Section_Id { get; set; }
         public string Name { get; set; }
-        public Nullable<int> Staff_Id { get; set; }
+        public int Staff_Id { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Cl_Sec> Cl_Sec { get; set; }

@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="154178bcc6c646728b8c4acab6368ef4" Name="Diagram1">
+      <Diagram DiagramId="848c6078d9f24584bf4859b7ee57df35" Name="Diagram1">
         <EntityTypeShape EntityType="InvictusSchoolModel.Admin" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="InvictusSchoolModel.Attendence" Width="1.5" PointX="7.5" PointY="3.625" IsExpanded="true" />
         <EntityTypeShape EntityType="InvictusSchoolModel.Cl_Sec" Width="1.5" PointX="7.5" PointY="15.125" IsExpanded="true" />
@@ -26,10 +26,10 @@
         <EntityTypeShape EntityType="InvictusSchoolModel.Subject" Width="1.5" PointX="5.25" PointY="19.25" IsExpanded="true" />
         <EntityTypeShape EntityType="InvictusSchoolModel.sysdiagram" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
         <AssociationConnector Association="InvictusSchoolModel.FK_Attendence_Student_Record" ManuallyRouted="false" />
-        <AssociationConnector Association="InvictusSchoolModel.FK_Cl_Sec_class" ManuallyRouted="false" />
-        <AssociationConnector Association="InvictusSchoolModel.FK_Cl_Sec_Section" ManuallyRouted="false" />
-        <AssociationConnector Association="InvictusSchoolModel.FK_Cl_Sub_class" ManuallyRouted="false" />
-        <AssociationConnector Association="InvictusSchoolModel.FK_Cl_Sub_Subject" ManuallyRouted="false" />
+        <AssociationConnector Association="InvictusSchoolModel.FK_Cl_Sec_Class" ManuallyRouted="false" />
+        <AssociationConnector Association="InvictusSchoolModel.FK_Cl_Sec_Sec" ManuallyRouted="false" />
+        <AssociationConnector Association="InvictusSchoolModel.FK_Cl_Sub_Class" ManuallyRouted="false" />
+        <AssociationConnector Association="InvictusSchoolModel.FK_Cl_Sub_Sub" ManuallyRouted="false" />
         <AssociationConnector Association="InvictusSchoolModel.FK_CST_Class" ManuallyRouted="false" />
         <AssociationConnector Association="InvictusSchoolModel.FK_Exam_Schedule_Class" ManuallyRouted="false" />
         <AssociationConnector Association="InvictusSchoolModel.FK_Result_Class" ManuallyRouted="false" />

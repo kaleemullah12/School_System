@@ -22,7 +22,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Class</label>
-                                <select id="CST_Cl" class="form-control" required>
+                                <select id="Classid" class="form-control" required>
                                     <option value="">Select...........</option>
                                     @foreach (var item in ViewBag.cl)
                                     {
@@ -34,6 +34,7 @@
                             <table class="table table-togglable text-nowrap table-hover">
                                 <thead>
                                     <tr>
+                                        <th>ID</th>
                                         <th>Section</th>
                                         <th class="text-right">Actions</th>
                                     </tr>
@@ -56,7 +57,7 @@
 
                     </div>
 
-                    <button type="button" class="btn  btn-primary btn-block col-md-6" onclick="CST()">Save</button>
+                    <button type="button" class="btn  btn-primary btn-block col-md-6" onclick="Save()">Save</button>
                 </form>
             </div>
         </div>

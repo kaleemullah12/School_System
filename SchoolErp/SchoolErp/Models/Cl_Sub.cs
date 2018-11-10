@@ -14,7 +14,7 @@ namespace SchoolErp.Models
     
     public partial class Cl_Sub
     {
-        public int Cl_Sub_ID { get; set; }
+        public int Cl_Sub1 { get; set; }
         public int Class_Id { get; set; }
         public int Sub_Id { get; set; }
     

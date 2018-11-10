@@ -21,7 +21,7 @@ namespace SchoolErp.Models
         public string Address { get; set; }
         public string Cell_Number { get; set; }
         public string Gender { get; set; }
-        public Nullable<int> Stud_Roll_Number { get; set; }
+        public int Stud_Roll_Number { get; set; }
         public string Password { get; set; }
         public int Parent_Guardian { get; set; }
         public string Relation { get; set; }

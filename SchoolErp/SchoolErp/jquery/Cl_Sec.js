@@ -5,9 +5,9 @@ $(document).ready(function () {
 
 
 function Add() {
-    var section = $('#section option:selected').val();
+    var Section_Id = $('#section option:selected').val();
     var sectionName = $('#section option:selected').text();
-    if (!section) {
+    if (!Section_Id) {
         ShowError('Section is required!');
         return;
     }
@@ -15,15 +15,15 @@ function Add() {
    
     var isFound = 0;
     for (i = 0; i < hashtable.length; i++) {
-        if (hashtable[i].section == section) {
+        if (hashtable[i].Section_Id == Section_Id) {
             isFound = 1;
-            hashtable[i].section = section;
+            hashtable[i].Section_Id = Section_Id;
            
-            ShowSuccess('Section is updated!');
+            ShowSuccess('Section is Already Exit!');
         }
     }
     if (isFound == 0) {
-        hashtable.push({ section: section, Name: sectionName });
+        hashtable.push({ Section_Id: Section_Id, Name: sectionName });
         ShowSuccess('Section added!');
     }
 
@@ -39,27 +39,22 @@ function FillContainerFromArray() {
     }
     for (i = 0; i < hashtable.length; i++) {
         html += '<tr>' +
-                      '<td>' + hashtable[i].Name + '</td>' +
+            '<td>' + hashtable[i].Section_Id + '</td>' +
+            '<td>' + hashtable[i].Name + '</td>' +
                       '<td class="text-right">' +
-                           '<a href="javascript:;"><i class="glyphicon glyphicon-pencil" title="Edit" onclick="EditActionItem(' + hashtable[i].section + ')"></i></a>' +
-                           '&nbsp;&nbsp;<a href="javascript:;" onclick="DeleteActionItem(' + hashtable[i].section + ')"><i class="glyphicon glyphicon-trash" title="Delete"></i></a>' +
+                           
+            '&nbsp;&nbsp;<a href="javascript:;" onclick="DeleteActionItem(' + hashtable[i].Section_Id + ')"><i class="glyphicon glyphicon-trash" title="Delete"></i></a>' +
                       '</td>' +
                   '</tr>';
     }
     $("#container_List").append(html);
-}
-function EditActionItem(section) {
-    debugger;
-    $('#section').val(section);
-    //$('#section').trigger('change');
-    
 }
 
 
 function DeleteActionItem(itemid) {
     for (i = 0; i < hashtable.length; i++) {
         debugger;
-        if (hashtable[i].section == itemid) {
+        if (hashtable[i].Section_Id == itemid) {
             ShowSuccess('item deleted!');
             hashtable.splice(i, 1);
             break;
@@ -70,3 +65,31 @@ function DeleteActionItem(itemid) {
   
 }
 
+function Save() {
+    var classid = $('#Classid option:selected').val();
+    if (classid == "") {
+        ShowError("Please Enter Class");
+        return;
+    }
+    debugger;
+    $.ajax({
+        url: "/Cl_Sec/Save",
+        type: "Post",
+
+        data: {
+            Classid: classid,
+            SectionList: hashtable
+           },
+       
+        datatype: "json",
+        success: function (data) {
+            if (data.msg == "Save") {
+                ShowSuccess('Save SuccessFully');
+          //$("input[name='gender']:checked").val('Male');
+            } 
+        },
+        error: function (error) {
+            ShowError("Error In saving");
+        },
+    });
+}

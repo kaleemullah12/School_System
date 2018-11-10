@@ -15,7 +15,7 @@ namespace SchoolErp.Models
     public partial class Result
     {
         public int Result_Id { get; set; }
-        public Nullable<int> Stud_Id { get; set; }
+        public int Stud_Id { get; set; }
         public int Class_Id { get; set; }
         public int Section_Id { get; set; }
         public int Subject_Id { get; set; }
