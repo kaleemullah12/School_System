@@ -1,8 +1,14 @@
 ﻿var hashtable = [];
 $(document).ready(function () {
-
+    
 });
 
+function clear() {
+    $('#section').val('');
+    $('#Classid').val('');
+    hashtable = [];
+    $("#container_List").append('');
+}
 
 function Add() {
     var Section_Id = $('#section option:selected').val();
@@ -86,6 +92,7 @@ function Save() {
             if (data.msg == "Save") {
                 ShowSuccess('Save SuccessFully');
           //$("input[name='gender']:checked").val('Male');
+                clear();
             } 
         },
         error: function (error) {
