@@ -8,7 +8,7 @@ $(document).ready(function () {
 function clearform() {
     $('#C_Name').val('');
     $('#Fees').val('');
-   
+    $('#C_ID').val('');
 
 
 }
@@ -69,6 +69,7 @@ function AddClass() {
         success: function (data) {
             if (data.msg == "save") {
                 ShowSuccess('Save SuccessFully');
+                GetList();
                 clearform();
             } else if (data.data == "Edit") {
                 ShowSuccess('Updated SuccessFully');
