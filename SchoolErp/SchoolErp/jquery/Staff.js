@@ -1,6 +1,7 @@
 ﻿
 $(document).ready(function () {
     clearform();
+    GetList();
 });
 
 
@@ -111,5 +112,28 @@ function AddStaff() {
             ShowError('Error in saving');
         },
 
+    });
+}
+function GetList() {
+    //debugger;
+    $('#tbllist').html('');
+    $.ajax({
+        type: 'GET',
+        dataType: 'html',
+        //dataType: 'application/json',
+        url: '/Staff/StaffList',
+        success: function (result) {
+
+            var result = JSON.parse(result);
+            for (var i = 0; i < result.length; i++) {
+                AddOption = '<tr id=' + result[i].Staff_id + '><td>' + result[i].Name + '</td> <td>' + result[i].Cell_Number + '</td> <td>' + result[i].Address + '</td> <td>' + result[i].CNIC + '</td> <td>' + result[i].Qualification1 + '</td> <' +/* result[i].Detail + '</td> <td>' +*/ /*'</td> <td>' +*//* result[i].Salary + '</td> <td>' +*//* result[i].DOB + '</td> <td>' +*/ result[i].Designation_Id.Name + '</td> <td style="text-align:center">' + '<button id="loading" class="btn btn-sm" style="font-size:15px;color:red;hover:green" onclick=' + ' Delete' + '(' + result[i].Stud_Id + ')><span class="glyphicon glyphicon-trash"></span></button> | <button id="Edit" class="btn btn-sm" style="font-size:20px;color:Aqua;" onclick=' + 'GetId' + '(' + result[i].Staff_Id + ')>' + " " + '<span class="glyphicon glyphicon-edit"></span> </button></td> </tr>'
+                $('#tbllist').append(AddOption);
+            }
+
+
+
+        },
+        error: function (error) {
+        }
     });
 }
