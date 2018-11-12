@@ -37,6 +37,15 @@ namespace SchoolErp.Controllers
 
             return Json(new { msg = "save" }, JsonRequestBehavior.AllowGet);
         }
+
+        public ActionResult StaffList()
+        {
+            StaffServices services = new StaffServices();
+            var list = services.List();
+            return Json(list, JsonRequestBehavior.AllowGet);
+
+        }
+
         [HttpGet]
         public ActionResult AddDesignation()
         {

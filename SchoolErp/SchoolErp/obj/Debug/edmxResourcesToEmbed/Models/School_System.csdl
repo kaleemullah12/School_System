@@ -71,8 +71,8 @@
       <PropertyRef Name="Des_Id" />
     </Key>
     <Property Name="Des_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <NavigationProperty Name="Staffs" Relationship="Self.FK_Staff_Designation" FromRole="Designation" ToRole="Staff" />
+    <Property Name="Des_Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="Event">
     <Key>
