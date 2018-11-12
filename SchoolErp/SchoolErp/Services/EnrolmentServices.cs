@@ -15,5 +15,12 @@ namespace SchoolErp.Services
             db.Student_Enrolments.Add(rec);
             db.SaveChanges();
         }
+        public object StudentEnrolmentList()
+        {
+            var obj = db.Student_Enrolments.ToList().Select(x => new {  StudentName =  x.Student_Record.Name, ClassName = x.Class.Name, SectionName= x.Section.Name,StaffName=x.Staff.Name, x.Session_Start, x.Session_End });
+
+            return obj;
+
+        }
     }
 }
