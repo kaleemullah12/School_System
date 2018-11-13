@@ -104,16 +104,23 @@ namespace SchoolErp.Controllers
         public JsonResult Student_Enrolment(Student_Enrolment rec)
         {
             EnrolmentServices services = new EnrolmentServices();
+            if (rec.Enrolment_Id == 0) { 
             services.Student_Enrolment(rec);
             var stud_list = db.Student_Records.ToList();
             ViewBag.stud = stud_list;
             var cl_list = db.Classes.ToList();
             ViewBag.cl = cl_list;
-           
-
-
-
-            return Json(new { msg = "save" }, JsonRequestBehavior.AllowGet);
+                return Json(new { msg = "save" }, JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                services.Student_Enrolment(rec);
+                var stud_list = db.Student_Records.ToList();
+                ViewBag.stud = stud_list;
+                var cl_list = db.Classes.ToList();
+                ViewBag.cl = cl_list;
+                return Json(new { msg = "Update" }, JsonRequestBehavior.AllowGet);
+            }           
         }
 
         public ActionResult GetSection(int Id)
@@ -133,6 +140,18 @@ namespace SchoolErp.Controllers
           var rec=  enrl_service.StudentEnrolmentList();
             return Json(rec,JsonRequestBehavior.AllowGet);
         }
+        public ActionResult RemoveEnroll(int id)
+        {
+            enrl_service.RemoveEnroll(id);
+            return Json(new { msg = "Done" }, JsonRequestBehavior.AllowGet);
+        }
+        [HttpGet]
+        public ActionResult GetEnroll(int id)
+        {
+            var rec=enrl_service.GetEnroll(id);
+            return Json(rec, JsonRequestBehavior.AllowGet);
+        }
+
         [HttpGet]
         public ActionResult AddAttendence()
         {

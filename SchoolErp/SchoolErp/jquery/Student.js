@@ -157,7 +157,7 @@ function GetId(id) {
     $.ajax({
 
         url: "/Students/GetStudent/" + id,
-        typr: "GET",
+        type: "GET",
         contentType: "application/json;charset=utf-8",
         datatype: "json",
         success: function (result) {

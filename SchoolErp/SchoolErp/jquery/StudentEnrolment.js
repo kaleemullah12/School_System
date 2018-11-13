@@ -1,5 +1,4 @@
-﻿
-$(document).ready(function () {
+﻿$(document).ready(function () {
     debugger;
     clearform();
     GetList();
@@ -8,7 +7,7 @@ $(document).ready(function () {
 
 
 function clearform() {
-   
+    $('#enrollId').val('');
     $("#E_Roll").val('');
     $('#E_Roll').trigger('change');
     $("#E_Class").val('');
@@ -24,7 +23,7 @@ function Student_Enrolment() {
     debugger;
     //preventDefault();
 
-    
+    var id = $('#enrollId').val();
     var rl = $('#E_Roll option:selected').val();
     var cl = $('#E_Class option:selected').val();
     var sec = $('#E_Section option:selected').val();
@@ -64,6 +63,7 @@ function Student_Enrolment() {
         type: "Post",
 
         data: {
+            Enrolment_Id: id,
             Stud_Id: rl,
             Class_Id: cl,
             Section_Id: sec,
@@ -79,6 +79,11 @@ function Student_Enrolment() {
             if (data.msg == "save") {
                 ShowSuccess('Save SuccessFully');
                 clearform();
+                GetList();
+            } else  {
+                ShowSuccess('Update SuccessFully');
+                clearform();
+                GetList();
             }
         },
         error: function (error) {
@@ -139,8 +144,9 @@ function GetList() {
         success: function (result) {
             debugger;
             var result = JSON.parse(result);
+
             for (var i = 0; i < result.length; i++) {
-                AddOption = '<tr id=' + + '><td>' + result[i].StudentName + '</td> <td>' + result[i].ClassName + '</td> <td>' + result[i].SectionName + '</td> <td>' + result[i].StaffName + '</td> <td>' + result[i].Session_Start + '</td> <td>' + result[i].Session_End + '</td><td style="text-align:center">' + '<button id="loading" class="btn btn-sm" style="font-size:15px;color:red;hover:green" onclick=' + ' Delete' + '(' + result[i].Stud_Id + ')><span class="glyphicon glyphicon-trash"></span></button> | <button id="Edit" class="btn btn-sm" style="font-size:20px;color:Aqua;" onclick=' + 'GetId' + '(' + result[i].Stud_Id + ')>' + " " + '<span class="glyphicon glyphicon-edit"></span> </button></td> </tr>'
+                AddOption = '<tr><td>' + result[i].StudentName + '</td> <td>' + result[i].ClassName + '</td> <td>' + result[i].SectionName + '</td> <td>' + result[i].StaffName + '</td> <td>' + result[i].Starttime + '</td> <td>' + result[i].Endtime + '</td><td style="text-align:center">' + '<button id="loading" class="btn btn-sm" style="font-size:15px;color:red;hover:green" onclick=' + ' Delete' + '(' + result[i].id + ')><span class="glyphicon glyphicon-trash"></span></button> | <button id="Edit" class="btn btn-sm" style="font-size:20px;color:Aqua;" onclick=' + 'GetId' + '(' + result[i].id + ')>' + " " + '<span class="glyphicon glyphicon-edit"></span> </button></td> </tr>'
                 $('#tbllist').append(AddOption);
             }
 
@@ -151,3 +157,55 @@ function GetList() {
         }
     });
 }
+function Delete(id) {
+    debugger;
+    $.ajax({
+        url: "/Students/RemoveEnroll/" + id,
+        type: "POST",
+
+        contentType: "application/json;charset=utf-8",
+        datatype: "json",
+        success: function (result) {
+            if (result.msg == "Done") {
+                ShowSuccess('Delete SuccessFully');
+                GetList();
+            }
+
+        },
+        Error: function (errormessage) {
+            ShowError("You cannot Delete.");
+        },
+    });
+
+}
+
+
+function GetId(id) {
+    
+    $("#enrollId").focus();
+  
+    debugger;
+    $.ajax({
+        url: "/Students/GetEnroll/" + id,
+        type: "GET",
+        datatype: "json",
+        success: function (result) {
+            debugger;
+            
+            $("#enrollId").val(result.Enrolment_Id);
+            $("#E_Roll").val(result.roll);
+            $("#E_Class").val(result.Class_Id);
+            
+            $("#E_Section").append($("<option />").val(result.Section_Id).text(result.Section));
+            $("#E_Staff").append($("<option />").val(result.Staff_Id).text(result.Staff));           
+            $("#E_Startdate").val(result.Starttime);
+            $("#E_Enddate").val(result.EndTime);
+
+        },
+        error: function (errormessage) {
+            ShowError("Something is Wrong in Get Action");
+        },
+    });
+}
+
+

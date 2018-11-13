@@ -266,6 +266,7 @@
     <Compile Include="Services\SubjectServices.cs" />
     <Compile Include="Services\S_AttendenceServices.cs" />
     <Compile Include="ViewModel\Class_SectionVM.cs" />
+    <Compile Include="ViewModel\EnrollmentEditVM.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="asset\animate.min.css" />
