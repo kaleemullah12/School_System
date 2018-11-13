@@ -12,6 +12,7 @@ namespace SchoolErp.Controllers
     {
         InvictusSchoolEntities db = new InvictusSchoolEntities();
         StudentServices services = new StudentServices();
+        EnrolmentServices enrl_service = new EnrolmentServices();
         // GET: Students
         public ActionResult Index()
         {
@@ -93,8 +94,8 @@ namespace SchoolErp.Controllers
             ViewBag.stud = stud_list;
             var cl_list = db.Classes.ToList();
             ViewBag.cl = cl_list;
-            var sec_list = db.Sections.ToList();
-            ViewBag.sec = sec_list;
+            //var sec_list = db.Cl_Sec.Include("").Where(x => x.Sec_Id == );
+            //ViewBag.sec = sec_list;
             var st_list = db.Staffs.ToList();
             ViewBag.st = st_list;
             return View();
@@ -108,14 +109,29 @@ namespace SchoolErp.Controllers
             ViewBag.stud = stud_list;
             var cl_list = db.Classes.ToList();
             ViewBag.cl = cl_list;
-            var sec_list = db.Sections.ToList();
-            ViewBag.sec = sec_list;
-            var st_list = db.Staffs.ToList();
-            ViewBag.st = st_list;
+           
 
 
 
             return Json(new { msg = "save" }, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult GetSection(int Id)
+        {
+            var list = db.Cl_Sec.Where(x => x.Class_Id == Id).Select(c=> new { c.Sec_Id,c.Section.Name}).ToList();
+            
+            return Json(list, JsonRequestBehavior.AllowGet);
+        }
+        public ActionResult GetStaff(int Id)
+        {
+            var list = db.Cl_Sec.Where(x => x.Sec_Id == Id).Select(c => new { c.Section.Staff_Id, c.Section.Staff.Name }).ToList();
+
+            return Json(list, JsonRequestBehavior.AllowGet);
+        }
+        public ActionResult StudentEnrolmentList()
+        {
+          var rec=  enrl_service.StudentEnrolmentList();
+            return Json(rec,JsonRequestBehavior.AllowGet);
         }
         [HttpGet]
         public ActionResult AddAttendence()

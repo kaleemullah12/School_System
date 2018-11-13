@@ -6,8 +6,8 @@ $(document).ready(function () {
 function clear() {
     $('#section').val('');
     $('#Classid').val('');
-    hashtable = [];
-    $("#container_List").append('');
+    //hashtable.length = 0;
+    $('#container_List').remove();
 }
 
 function Add() {
