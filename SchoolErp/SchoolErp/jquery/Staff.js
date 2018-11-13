@@ -127,7 +127,7 @@ function GetList() {
             var result = JSON.parse(result);
             debugger;
             for (var i = 0; i < result.length; i++) {
-                AddOption = '<tr id=' + result[i].Staff_id + '><td>' + result[i].Name + '</td> <td>' + result[i].Cell_Number + '</td> <td>' + result[i].Address + '</td> <td>' + result[i].CNIC + '</td> <td>' + result[i].Qualification1 + '</td> <td>' +/* result[i].Detail + '</td> <td>' +*/ /*'</td> <td>' +*//* result[i].Salary + '</td> <td>' +*//* result[i].DOB + '</td> <td>' +*/ result[i].design + '</td> <td style="text-align:center">' + '<button id="loading" class="btn btn-sm" style="font-size:15px;color:red;hover:green" onclick=' + ' Delete' + '(' + result[i].Stud_Id + ')><span class="glyphicon glyphicon-trash"></span></button> | <button id="Edit" class="btn btn-sm" style="font-size:20px;color:Aqua;" onclick=' + 'GetId' + '(' + result[i].Staff_Id + ')>' + " " + '<span class="glyphicon glyphicon-edit"></span> </button></td> </tr>'
+                AddOption = '<tr id=' + result[i].Staff_id + '><td>' + result[i].Name + '</td> <td>' + result[i].Cell_Number + '</td> <td>' + result[i].Address + '</td> <td>' + result[i].CNIC + '</td> <td>' + result[i].Qualification1 + '</td> <td>' +/* result[i].Detail + '</td> <td>' +*/ /*'</td> <td>' +*//* result[i].Salary + '</td> <td>' +*//* result[i].DOB + '</td> <td>' +*/ result[i].design + '</td> <td style="text-align:center">' + '<button id="loading" class="btn btn-sm" style="font-size:15px;color:red;hover:green" onclick=' + ' Delete' + '(' + result[i].Staff_Id + ')><span class="glyphicon glyphicon-trash"></span></button> | <button id="Edit" class="btn btn-sm" style="font-size:20px;color:Aqua;" onclick=' + 'GetId' + '(' + result[i].Staff_Id + ')>' + " " + '<span class="glyphicon glyphicon-edit"></span> </button></td> </tr>'
                 $('#tbllist').append(AddOption);
             }
 
@@ -135,6 +135,73 @@ function GetList() {
 
         },
         error: function (error) {
+        }
+    });
+}
+
+function Delete(id) {
+    debugger;
+    $.ajax({
+        url: "/Staff/RemoveStaff/" + id,
+        type: "POST",
+
+        contentType: "application/json;charset=utf-8",
+        datatype: "json",
+        success: function (result) {
+            if (result.msg == "Done") {
+                ShowSuccess('Delete SuccessFully');
+                GetList();
+            }
+
+        },
+        Error: function (errormessage) {
+            alert("You cannot Delete.");
+        }
+    });
+
+}
+
+function GetId(id) {
+    debugger;
+    //$("#txt1").css("border-color", "red");
+    //$("#txt1").focus();
+    //$("#txt2").css("border-color", "red");
+    $("#Staff_Id").focus();
+
+    $.ajax({
+
+        url: "/Staff/GetStaff/" + id,
+        typr: "GET",
+        contentType: "application/json;charset=utf-8",
+        datatype: "json",
+        success: function (result) {
+            debugger;
+
+            //$("#Staff_Id").val(result.Staff_Id)
+            $("#S_Name").val(result.Name);
+            $("#S_CNIC").val(result.CNIC);
+            $("#S_DOB").val(result.dob);
+            
+
+            $("#S_Cellnumb").val(result.Cell_Number);
+            $("#S_Qualification").val(result.Qualification_Id);
+            $("#S_Designation").val(result.Designation_Id);
+            $("#S_Address").val(result.Address);
+            $("#S_Salary").val(result.Salary);
+            $("#S_Detail").val(result.Detail);
+            // debugger;
+            //alert("rightway");
+            //if (result.Gender.toUpperCase() === "MALE") {
+            //    $('#gender').prop("checked", true);
+            //}
+            //else {
+            //    $('#gender1').prop("checked", true);
+            //}
+
+
+        },
+        error: function (errormessage) {
+            alert("Something is Wrong in Get Action");
         }
     });
 }

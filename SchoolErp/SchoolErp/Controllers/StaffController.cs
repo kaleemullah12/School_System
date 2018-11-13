@@ -46,6 +46,37 @@ namespace SchoolErp.Controllers
 
         }
 
+        public ActionResult RemoveStaff(int id)
+        {
+            StaffServices services = new StaffServices();
+            if (Session["admin"] != null)
+            {
+                services.Remove(id);
+                return Json(new { msg = "Done" }, JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+
+                return RedirectToAction("Login", "Home");
+            }
+        }
+
+        [HttpGet]
+        public ActionResult GetStaff(int id)
+        {
+            if (Session["admin"] != null)
+            {
+                var det = db.Staffs.Where(x => x.Staff_Id == id).Select(c => new { c.Name, c.Salary, c.Address, c.Cell_Number, c.CNIC, c.Designation_Id, c.Qualification_Id, c.Qualification.Qualification1,dob= c.DOB.ToString(), c.Detail }).SingleOrDefault();
+                return Json(det, JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                return RedirectToAction("Login", "Home");
+            }
+        }
+
+
+
         [HttpGet]
         public ActionResult AddDesignation()
         {

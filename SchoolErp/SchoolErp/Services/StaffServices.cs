@@ -17,9 +17,33 @@ namespace SchoolErp.Services
 
         public object List()
         {
-            var obj = db.Staffs.ToList().Select(x => new { x.Staff_Id, x.Name, x.Cell_Number, x.CNIC, x.Address, x.Detail,design=x.Designation.Name,x.Salary,x.DOB,x.Qualification.Qualification1,x.Gender});
+            var obj = db.Staffs.ToList().Select(x => new { x.Staff_Id, x.Name, x.Cell_Number, x.CNIC, x.Address, x.Detail,design=x.Designation_Id,x.Salary,dob=x.DOB.ToString(),x.Qualification.Qualification1,x.Gender});
 
             return obj;
         }
+        public void Remove(int id)
+        {
+            var rec = db.Staffs.Find(id);
+            db.Staffs.Remove(rec);
+            db.SaveChanges();
+        }
+        public void Update(Staff rec)
+        {
+
+            var ret = db.Staffs.Where(x => x.Staff_Id == rec.Staff_Id).SingleOrDefault();
+            ret.Staff_Id = rec.Staff_Id;
+            ret.Name = rec.Name;
+            ret.Cell_Number = rec.Cell_Number;
+            ret.Address = rec.Address;
+            //ret.DOB = rec.DOB;
+            ret.Designation_Id = rec.Designation_Id;
+            ret.Qualification_Id = rec.Qualification_Id;
+            //ret.Gender = rec.Gender;
+            ret.CNIC = ret.CNIC;
+            db.SaveChanges();
+
+        }
+
+
     }
 }
