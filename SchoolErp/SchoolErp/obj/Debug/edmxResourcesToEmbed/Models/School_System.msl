@@ -61,7 +61,7 @@
     <EntitySetMapping Name="Designations">
       <EntityTypeMapping TypeName="InvictusSchoolModel.Designation">
         <MappingFragment StoreEntitySet="Designation">
-          <ScalarProperty Name="Des_Name" ColumnName="Des_Name" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Des_Id" ColumnName="Des_Id" />
         </MappingFragment>
       </EntityTypeMapping>

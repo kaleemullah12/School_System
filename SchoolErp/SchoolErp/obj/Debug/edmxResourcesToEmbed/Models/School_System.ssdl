@@ -56,7 +56,7 @@
       <PropertyRef Name="Des_Id" />
     </Key>
     <Property Name="Des_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Des_Name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <EntityType Name="Event">
     <Key>

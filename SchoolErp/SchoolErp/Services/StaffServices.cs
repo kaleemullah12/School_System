@@ -17,7 +17,7 @@ namespace SchoolErp.Services
 
         public object List()
         {
-            var obj = db.Staffs.ToList().Select(x => new { x.Staff_Id, x.Name, x.Cell_Number, x.CNIC, x.Address, x.Detail,x.Designation_Id,x.Salary,x.DOB,x.Qualification.Qualification1,x.Gender});
+            var obj = db.Staffs.ToList().Select(x => new { x.Staff_Id, x.Name, x.Cell_Number, x.CNIC, x.Address, x.Detail,design=x.Designation.Name,x.Salary,x.DOB,x.Qualification.Qualification1,x.Gender});
 
             return obj;
         }

@@ -61,7 +61,7 @@
             <PropertyRef Name="Des_Id" />
           </Key>
           <Property Name="Des_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Des_Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Event">
           <Key>
@@ -733,7 +733,7 @@
           </Key>
           <Property Name="Des_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <NavigationProperty Name="Staffs" Relationship="Self.FK_Staff_Designation" FromRole="Designation" ToRole="Staff" />
-          <Property Name="Des_Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Event">
           <Key>
@@ -1433,7 +1433,7 @@
           <EntitySetMapping Name="Designations">
             <EntityTypeMapping TypeName="InvictusSchoolModel.Designation">
               <MappingFragment StoreEntitySet="Designation">
-                <ScalarProperty Name="Des_Name" ColumnName="Des_Name" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Des_Id" ColumnName="Des_Id" />
               </MappingFragment>
             </EntityTypeMapping>
