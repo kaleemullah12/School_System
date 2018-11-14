@@ -28,6 +28,7 @@ namespace SchoolErp.Controllers
         [HttpPost]
         public JsonResult AddStaff(Staff rec)
         {
+            if (rec.Staff_Id == 0) { 
             StaffServices services = new StaffServices();
             services.AddStaff(rec);
             var Des_list = db.Designations.ToList();
@@ -36,6 +37,17 @@ namespace SchoolErp.Controllers
             ViewBag.rel = Qualif_list;
 
             return Json(new { msg = "save" }, JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                StaffServices service = new StaffServices();
+                service.Update(rec);
+                var Des_list = db.Designations.ToList();
+                var Qualif_list = db.Qualifications.ToList();
+                ViewBag.stud = Des_list;
+                ViewBag.rel = Qualif_list;
+                return Json(new { msg = "Update" }, JsonRequestBehavior.AllowGet);
+            }
         }
 
         public ActionResult StaffList()
@@ -66,7 +78,8 @@ namespace SchoolErp.Controllers
         {
             if (Session["admin"] != null)
             {
-                var det = db.Staffs.Where(x => x.Staff_Id == id).Select(c => new { c.Name, c.Salary, c.Address, c.Cell_Number, c.CNIC, c.Designation_Id, c.Qualification_Id, c.Qualification.Qualification1,dob= c.DOB.ToString(), c.Detail }).SingleOrDefault();
+                StaffServices services = new StaffServices();
+               var det= services.GetStaff(id);
                 return Json(det, JsonRequestBehavior.AllowGet);
             }
             else
