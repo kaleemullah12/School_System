@@ -29,7 +29,7 @@ namespace SchoolErp.Services
         }
         public object GetStaff(int id)
         {
-            var det = db.Staffs.Where(x => x.Staff_Id == id).Select(c => new { c.Staff_Id,c.Name, c.Salary, c.Address, c.Cell_Number, c.CNIC, c.Designation_Id, c.Qualification_Id, c.Qualification.Qualification1, dob = c.DOB.ToString(), c.Detail }).SingleOrDefault();
+            var det = db.Staffs.Where(x => x.Staff_Id == id).Select(c => new { c.Staff_Id,c.Name,c.Gender, c.Salary, c.Address, c.Cell_Number, c.CNIC, c.Designation_Id, c.Qualification_Id, c.Qualification.Qualification1, dob = c.DOB.ToString(), c.Detail }).SingleOrDefault();
             return det;
         }
         public void Update(Staff rec)
@@ -40,10 +40,10 @@ namespace SchoolErp.Services
             ret.Name = rec.Name;
             ret.Cell_Number = rec.Cell_Number;
             ret.Address = rec.Address;
-            //ret.DOB = rec.DOB;
+            ret.DOB = rec.DOB;
             ret.Designation_Id = rec.Designation_Id;
             ret.Qualification_Id = rec.Qualification_Id;
-            //ret.Gender = rec.Gender;
+            ret.Gender = rec.Gender;
             ret.CNIC = ret.CNIC;
             db.SaveChanges();
 

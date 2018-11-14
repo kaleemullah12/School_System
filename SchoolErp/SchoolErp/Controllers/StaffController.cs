@@ -79,8 +79,8 @@ namespace SchoolErp.Controllers
             if (Session["admin"] != null)
             {
                 StaffServices services = new StaffServices();
-               var det= services.GetStaff(id);
-                return Json(det, JsonRequestBehavior.AllowGet);
+               var dt= services.GetStaff(id);
+                return Json(dt, JsonRequestBehavior.AllowGet);
             }
             else
             {

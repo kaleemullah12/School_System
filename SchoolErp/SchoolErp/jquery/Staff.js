@@ -6,6 +6,7 @@ $(document).ready(function () {
 
 
 function clearform() {
+    $('#S_Id').val('');
     $('#S_Name').val('');
     $('#S_CNIC').val('');
     $('#S_DOB').val('');
@@ -24,14 +25,19 @@ function clearform() {
 
 function AddStaff() {
     debugger;
+
     //preventDefault();
     var S_Id = $('#S_Id').val();
     var name = $('#S_Name').val();
+    
     var cnic = $('#S_CNIC').val();
     var dob = $('#S_DOB').val();
     var cellnumb = $('#S_Cellnumb').val();
     var salary = $('#S_Salary').val();
-    var gender = $("input[name='Gender']:checked").val();
+  
+    var gender = $("input[name='Gendr']:checked").val();
+   // var radios = $("input[type='radio']");
+   //var det= radios.filter(":checked");
     var Des = $('#S_Designation option:selected').val();
     var Qualif = $('#S_Qualification option:selected').val();
     var Det = $('#S_Detail').val();
@@ -108,13 +114,11 @@ function AddStaff() {
                 ShowSuccess('Save SuccessFully');
                 clearform();
                 GetList();
-<<<<<<< HEAD
-=======
             } else {
                 ShowSuccess('Update SuccessFully');
                 clearform();
                 GetList();
->>>>>>> 4a20cb4f17514136bded63bba9523a328c972d59
+
             }
         },
         error: function (error) {
@@ -198,15 +202,14 @@ function GetId(id) {
             $("#S_Address").val(result.Address);
             $("#S_Salary").val(result.Salary);
             $("#S_Detail").val(result.Detail);
-            // debugger;
+            debugger;
             //alert("rightway");
-            //if (result.Gender.toUpperCase() === "MALE") {
-            //    $('#gender').prop("checked", true);
-            //}
-            //else {
-            //    $('#gender1').prop("checked", true);
-            //}
-
+            if (result.Gender.toUpperCase() === "MALE") {
+                $('#gen1').prop("checked", true);
+            }
+            else {
+                $('#gen2').prop("checked", true);
+            }
 
         },
         error: function (errormessage) {
