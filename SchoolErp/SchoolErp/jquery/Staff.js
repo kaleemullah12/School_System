@@ -106,6 +106,7 @@ function AddStaff() {
             if (data.msg == "save") {
                 ShowSuccess('Save SuccessFully');
                 clearform();
+                GetList();
             }
         },
         error: function (error) {
