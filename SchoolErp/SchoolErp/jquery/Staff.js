@@ -25,7 +25,7 @@ function clearform() {
 function AddStaff() {
     debugger;
     //preventDefault();
-
+    var S_Id = $('#S_Id').val();
     var name = $('#S_Name').val();
     var cnic = $('#S_CNIC').val();
     var dob = $('#S_DOB').val();
@@ -88,6 +88,7 @@ function AddStaff() {
         type: "Post",
 
         data: {
+            Staff_Id:S_Id,
             Name: name,
             CNIC: cnic,
             DOB: dob,
@@ -106,6 +107,11 @@ function AddStaff() {
             if (data.msg == "save") {
                 ShowSuccess('Save SuccessFully');
                 clearform();
+                GetList();
+            } else {
+                ShowSuccess('Update SuccessFully');
+                clearform();
+                GetList();
             }
         },
         error: function (error) {
@@ -176,7 +182,7 @@ function GetId(id) {
         datatype: "json",
         success: function (result) {
             debugger;
-
+            $('#S_Id').val(result.Staff_Id);
             //$("#Staff_Id").val(result.Staff_Id)
             $("#S_Name").val(result.Name);
             $("#S_CNIC").val(result.CNIC);

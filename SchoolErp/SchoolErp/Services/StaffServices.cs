@@ -27,6 +27,11 @@ namespace SchoolErp.Services
             db.Staffs.Remove(rec);
             db.SaveChanges();
         }
+        public object GetStaff(int id)
+        {
+            var det = db.Staffs.Where(x => x.Staff_Id == id).Select(c => new { c.Staff_Id,c.Name, c.Salary, c.Address, c.Cell_Number, c.CNIC, c.Designation_Id, c.Qualification_Id, c.Qualification.Qualification1, dob = c.DOB.ToString(), c.Detail }).SingleOrDefault();
+            return det;
+        }
         public void Update(Staff rec)
         {
 
