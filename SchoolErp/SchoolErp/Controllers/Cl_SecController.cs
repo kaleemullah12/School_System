@@ -18,7 +18,13 @@ namespace SchoolErp.Controllers
         {
             return View();
         }
+        public ActionResult GetList()
+        {
+            var list = service.GetList();
+            return Json(list, JsonRequestBehavior.AllowGet);
 
+
+        }
         public ActionResult Create()
         {
             var sec_list = db.Sections.ToList();
@@ -32,6 +38,17 @@ namespace SchoolErp.Controllers
         {
             service.Save(rec);
             return Json(new { msg="Save"},JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult RemoveCl_Sec(int id)
+        {
+            service.RemoveCl_Sec(id);
+            return Json(new { msg = "Done" }, JsonRequestBehavior.AllowGet);
+        }
+        public ActionResult GetCl_Sec(int id)
+        {
+            var det = service.GetCl_Sec(id);
+            return Json(det, JsonRequestBehavior.AllowGet);
         }
     }
 }

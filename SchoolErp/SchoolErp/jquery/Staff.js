@@ -202,7 +202,7 @@ function GetId(id) {
             $("#S_Address").val(result.Address);
             $("#S_Salary").val(result.Salary);
             $("#S_Detail").val(result.Detail);
-            debugger;
+            //debugger;
             //alert("rightway");
             if (result.Gender.toUpperCase() === "MALE") {
                 $('#gen1').prop("checked", true);

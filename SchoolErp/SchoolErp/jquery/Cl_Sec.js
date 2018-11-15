@@ -1,6 +1,6 @@
 ﻿var hashtable = [];
 $(document).ready(function () {
-    
+    GetList();
 });
 
 function clear() {
@@ -8,6 +8,29 @@ function clear() {
     $('#Classid').val('');
     //hashtable.length = 0;
     $('#container_List').remove();
+}
+function GetList() {
+    debugger;
+    $('#tbllist').html('');
+    $.ajax({
+        type: 'GET',
+        dataType: 'html',
+        //dataType: 'application/json',
+        url: '/Cl_Sec/GetList',
+        success: function (result) {
+            debugger;
+            var result = JSON.parse(result);
+            for (var i = 0; i < result.length; i++) {
+                AddOption = '<tr><td>' + result[i].Name + '</td> <td style="text-align:center">' + '<button id="loading" class="btn btn-sm" style="font-size:15px;color:red;hover:green" onclick=' + ' Delete' + '(' + result[i].Class_Id + ')><span class="glyphicon glyphicon-trash"></span></button> | <button id="Edit" class="btn btn-sm" style="font-size:20px;color:Aqua;" onclick=' + 'GetId' + '(' + result[i].Class_Id + ')>' + " " + '<span class="glyphicon glyphicon-edit"></span> </button></td> </tr>'
+                $('#tbllist').append(AddOption);
+            }
+
+
+
+        },
+        error: function (error) {
+        }
+    });
 }
 
 function Add() {
@@ -100,3 +123,56 @@ function Save() {
         },
     });
 }
+
+function Delete(id) {
+    debugger;
+    $.ajax({
+        url: "/Cl_Sec/RemoveCl_Sec/" + id,
+        type: "POST",
+
+        contentType: "application/json;charset=utf-8",
+        datatype: "json",
+        success: function (result) {
+            if (result.msg == "Done") {
+                ShowSuccess('Delete SuccessFully');
+                GetList();
+            }
+
+        },
+        Error: function (errormessage) {
+            alert("You cannot Delete.");
+        }
+    });
+
+}
+
+
+function GetId(id) {
+    debugger;
+    //$("#txt1").css("border-color", "red");
+    //$("#txt1").focus();
+    //$("#txt2").css("border-color", "red");
+    $("#Stud_Id").focus();
+
+    $.ajax({
+
+        url: "/Cl_Sec/GetCl_Sec/" + id,
+        type: "GET",
+        contentType: "application/json;charset=utf-8",
+        datatype: "json",
+        success: function (result) {
+
+            debugger;
+           
+            for (var i = 0; i < result.length; i++) {
+                hashtable.push({ Section_Id: result[i].Sec_Id, Name: result[i].Name });
+            }
+            $("#Classid").val(result.Class_Id);
+            FillContainerFromArray();
+        },
+        error: function (errormessage) {
+            alert("Something is Wrong in Get Action");
+        }
+    });
+}
+
