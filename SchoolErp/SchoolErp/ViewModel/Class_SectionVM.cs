@@ -8,6 +8,7 @@ namespace SchoolErp.ViewModel
 {
     public class Class_SectionVM
     {
+        
         public int Classid { get; set; }
         public List<Section> SectionList { get; set; }
     }

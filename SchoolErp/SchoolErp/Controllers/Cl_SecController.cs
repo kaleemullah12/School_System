@@ -35,7 +35,8 @@ namespace SchoolErp.Controllers
         }
         [HttpPost]
         public JsonResult Save(Class_SectionVM rec)
-        {
+        { 
+
             service.Save(rec);
             return Json(new { msg="Save"},JsonRequestBehavior.AllowGet);
         }
@@ -49,6 +50,11 @@ namespace SchoolErp.Controllers
         {
             var det = service.GetCl_Sec(id);
             return Json(det, JsonRequestBehavior.AllowGet);
+        }
+        public ActionResult Update(Class_SectionVM det)
+        {
+            service.Update(det);
+            return Json(new { msg = "Done" }, JsonRequestBehavior.AllowGet);
         }
     }
 }
