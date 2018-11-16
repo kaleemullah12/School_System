@@ -15,5 +15,17 @@ namespace SchoolErp.Services
             db.SaveChanges();
 
         }
+
+        public object List()
+        {
+            var obj = db.Designations.Select(x => new { x.Des_Id, x.Name, }).ToList();
+            return obj;
+        }
+        public void Remove(int id)
+        {
+            var rec = db.Designations.Find(id);
+            db.Designations.Remove(rec);
+            db.SaveChanges();
+        }
     }
 }

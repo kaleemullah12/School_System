@@ -102,6 +102,29 @@ namespace SchoolErp.Controllers
             services.AddDesignation(rec);
             return Json(new { msg = "save" }, JsonRequestBehavior.AllowGet);
         }
+
+        public ActionResult DesignationList()
+        {
+            DesignationServices services = new DesignationServices();
+            var list = services.List();
+            return Json(list, JsonRequestBehavior.AllowGet);
+
+        }
+
+        public ActionResult RemoveDesignation(int id)
+        {
+            DesignationServices services = new DesignationServices();
+            if (Session["admin"] != null)
+            {
+                services.Remove(id);
+                return Json(new { msg = "Done" }, JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+
+                return RedirectToAction("Login", "Home");
+            }
+        }
         public ActionResult AddSalary()
         {
             return View();
