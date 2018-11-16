@@ -12,10 +12,8 @@ namespace SchoolErp.Services
         InvictusSchoolEntities db = new InvictusSchoolEntities();
         public void Save(Class_SectionVM Rec)
         {
-           
             var clasid = Rec.Classid;
             var sec_list = Rec.SectionList;
-            
             foreach (var item in sec_list)
             {
                 var VM = new Cl_Sec
@@ -26,7 +24,7 @@ namespace SchoolErp.Services
                 db.Cl_Sec.Add(VM);
                 db.SaveChanges();
             }
-           
+
 
         }
         public object GetList()
@@ -45,27 +43,6 @@ namespace SchoolErp.Services
         {
             var det = db.Cl_Sec.Where(o => o.Class_Id == id).Select(o=>new {o.Class.Class_Id,o.Sec_Id,o.CS_Id,o.Section.Name }).ToList();
             return det;
-        }
-        public void Update(Class_SectionVM ret)
-        {
-
-            var clasid = ret.Classid;
-            var sec_list = ret.SectionList;
-            var find = db.Cl_Sec.Select(o => new { o.Class_Id, o.Sec_Id }).ToList();
-            foreach (var item in sec_list)
-            {
-                var VM = new Cl_Sec
-                {
-                    Class_Id = clasid,
-                    Sec_Id = item.Section_Id
-                };
-                //foreach(var item1 in find)
-                //{
-                //    item1.Class_Id = VM.Class_Id;
-                //}
-                db.SaveChanges();
-            }
-       
         }
     }
 }

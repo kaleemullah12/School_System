@@ -1,9 +1,6 @@
 ﻿var hashtable = [];
 $(document).ready(function () {
-   
-    $('#up').hide();
     GetList();
-  
 });
 
 function clear() {
@@ -24,7 +21,7 @@ function GetList() {
             debugger;
             var result = JSON.parse(result);
             for (var i = 0; i < result.length; i++) {
-                AddOption = '<tr><td>' + result[i].Name + '</td> <td style="text-align:center">' + '<button id="loading" class="btn btn-sm" style="font-size:15px;color:red;hover:green" onclick=' + ' Delete' + '(' + result[i].Class_Id + ')><span class="glyphicon glyphicon-trash"></span></button> | <button id="Edit" class="btn btn-sm" style="font-size:20px;color:Aqua;" onclick=' + 'GetId' + '(' + result[i].Class_Id + ')>' + " " + '<span id="sp" class="glyphicon glyphicon-edit"></span> </button></td> </tr>'
+                AddOption = '<tr><td>' + result[i].Name + '</td> <td style="text-align:center">' + '<button id="loading" class="btn btn-sm" style="font-size:15px;color:red;hover:green" onclick=' + ' Delete' + '(' + result[i].Class_Id + ')><span class="glyphicon glyphicon-trash"></span></button> | <button id="Edit" class="btn btn-sm" style="font-size:20px;color:Aqua;" onclick=' + 'GetId' + '(' + result[i].Class_Id + ')>' + " " + '<span class="glyphicon glyphicon-edit"></span> </button></td> </tr>'
                 $('#tbllist').append(AddOption);
             }
 
@@ -98,7 +95,6 @@ function DeleteActionItem(itemid) {
 }
 
 function Save() {
-    
     var classid = $('#Classid option:selected').val();
     if (classid == "") {
         ShowError("Please Enter Class");
@@ -110,7 +106,6 @@ function Save() {
         type: "Post",
 
         data: {
-            
             Classid: classid,
             SectionList: hashtable
            },
@@ -121,7 +116,6 @@ function Save() {
                 ShowSuccess('Save SuccessFully');
           //$("input[name='gender']:checked").val('Male');
                 clear();
-                GetList();
             } 
         },
         error: function (error) {
@@ -155,8 +149,6 @@ function Delete(id) {
 
 function GetId(id) {
     debugger;
-    hashtable = [];
-    //$('#container_List').remove();
     //$("#txt1").css("border-color", "red");
     //$("#txt1").focus();
     //$("#txt2").css("border-color", "red");
@@ -169,18 +161,14 @@ function GetId(id) {
         contentType: "application/json;charset=utf-8",
         datatype: "json",
         success: function (result) {
-           
+
             debugger;
            
             for (var i = 0; i < result.length; i++) {
                 hashtable.push({ Section_Id: result[i].Sec_Id, Name: result[i].Name });
-                $("#Classid").val(result[i].Class_Id);
-                //$('#Id').val(result[i].CS_Id); 
             }
-            
+            $("#Classid").val(result.Class_Id);
             FillContainerFromArray();
-            $('#up').show();
-            $('#sa').hide();
         },
         error: function (errormessage) {
             alert("Something is Wrong in Get Action");
@@ -188,39 +176,3 @@ function GetId(id) {
     });
 }
 
-
-function Update() {
-   
-    var classid = $('#Classid option:selected').val();
-    if (classid == "") {
-        ShowError("Please Enter Class");
-        return;
-    }
-    debugger;
-    $.ajax({
-        url: "/Cl_Sec/Update",
-        type: "Post",
-
-        data: {
-            
-            Classid: classid,
-            SectionList: hashtable
-        },
-
-        datatype: "json",
-        success: function (data) {
-            if (data.msg == "Done") {
-                ShowSuccess('Update SuccessFully');
-                //$("input[name='gender']:checked").val('Male');
-                clear();
-                GetList();
-            }
-            $('#sa').show();
-            $('#up').hide();
-
-        },
-        error: function (error) {
-            ShowError("Error In saving");
-        },
-    });
-}
