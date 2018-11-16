@@ -176,15 +176,13 @@ function Delete(id) {
 
 function GetId(id) {
     debugger;
-    //$("#txt1").css("border-color", "red");
-    //$("#txt1").focus();
-    //$("#txt2").css("border-color", "red");
-    $("#Staff_Id").focus();
+   
+    $("#S_Id").focus();
 
     $.ajax({
 
         url: "/Staff/GetStaff/" + id,
-        typr: "GET",
+        type: "GET",
         contentType: "application/json;charset=utf-8",
         datatype: "json",
         success: function (result) {
