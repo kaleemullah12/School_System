@@ -50,5 +50,10 @@ namespace SchoolErp.Controllers
             var det = service.GetCl_Sec(id);
             return Json(det, JsonRequestBehavior.AllowGet);
         }
+        public ActionResult Update(Class_SectionVM det)
+        {
+            service.Update(det);
+            return Json(new { msg = "Done" }, JsonRequestBehavior.AllowGet);
+        }
     }
 }

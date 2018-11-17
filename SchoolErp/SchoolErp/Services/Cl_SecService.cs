@@ -44,5 +44,25 @@ namespace SchoolErp.Services
             var det = db.Cl_Sec.Where(o => o.Class_Id == id).Select(o=>new {o.Class.Class_Id,o.Sec_Id,o.CS_Id,o.Section.Name }).ToList();
             return det;
         }
+        public void Update(Class_SectionVM ret)
+        {
+
+            var clasid = ret.Classid;
+            var sec_list = ret.SectionList;
+            var det = db.Cl_Sec.Where(o => o.Class_Id == clasid).ToList();
+            db.Cl_Sec.RemoveRange(det);
+            db.SaveChanges();
+            foreach (var item in sec_list)
+            {
+                var VM = new Cl_Sec
+                {
+                    Class_Id = clasid,
+                    Sec_Id = item.Section_Id
+                };
+                db.Cl_Sec.Add(VM);
+                db.SaveChanges();
+            }
+
+        }
     }
 }

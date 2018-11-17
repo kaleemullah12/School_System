@@ -1,5 +1,6 @@
 ﻿var hashtable = [];
 $(document).ready(function () {
+    $('#up').hide();
     GetList();
 });
 
@@ -7,7 +8,9 @@ function clear() {
     $('#section').val('');
     $('#Classid').val('');
     //hashtable.length = 0;
-    $('#container_List').remove();
+    hashtable = [];
+    $("#container_List").empty();
+    //$("#container_List").append('');
 }
 function GetList() {
     debugger;
@@ -95,6 +98,7 @@ function DeleteActionItem(itemid) {
 }
 
 function Save() {
+    
     var classid = $('#Classid option:selected').val();
     if (classid == "") {
         ShowError("Please Enter Class");
@@ -116,6 +120,7 @@ function Save() {
                 ShowSuccess('Save SuccessFully');
           //$("input[name='gender']:checked").val('Male');
                 clear();
+                GetList();
             } 
         },
         error: function (error) {
@@ -149,10 +154,12 @@ function Delete(id) {
 
 function GetId(id) {
     debugger;
+    hashtable = [];
+    //$('#container_List').remove();
     //$("#txt1").css("border-color", "red");
     //$("#txt1").focus();
     //$("#txt2").css("border-color", "red");
-    $("#Stud_Id").focus();
+    $("#Classid").focus();
 
     $.ajax({
 
@@ -163,16 +170,57 @@ function GetId(id) {
         success: function (result) {
 
             debugger;
-           
+
             for (var i = 0; i < result.length; i++) {
                 hashtable.push({ Section_Id: result[i].Sec_Id, Name: result[i].Name });
+                $("#Classid").val(result[i].Class_Id);
+                //$('#Id').val(result[i].CS_Id); 
             }
-            $("#Classid").val(result.Class_Id);
+
             FillContainerFromArray();
+            $('#up').show();
+            $('#sa').hide();
         },
         error: function (errormessage) {
             alert("Something is Wrong in Get Action");
         }
     });
 }
+
+function Update() {
+
+    var classid = $('#Classid option:selected').val();
+    if (classid == "") {
+        ShowError("Please Enter Class");
+        return;
+    }
+    debugger;
+    $.ajax({
+        url: "/Cl_Sec/Update",
+        type: "Post",
+
+        data: {
+
+            Classid: classid,
+            SectionList: hashtable
+        },
+
+        datatype: "json",
+        success: function (data) {
+            if (data.msg == "Done") {
+                ShowSuccess('Update SuccessFully');
+                //$("input[name='gender']:checked").val('Male');
+                clear();
+                GetList();
+            }
+            $('#sa').show();
+            $('#up').hide();
+
+        },
+        error: function (error) {
+            ShowError("Error In saving");
+        },
+    });
+}
+
 
